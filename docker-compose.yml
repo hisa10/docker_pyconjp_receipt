@@ -1,0 +1,17 @@
+version: '2'
+services:
+  issue_receipt:
+    build:
+      context: ./issue_receipt
+      args: 
+        # Set GitHub branch name to deploy.
+        # Default: master
+        - GIT_BRANCH=master
+        - YEAR=2018
+    ports:
+      - "8116:8116"
+    volumes:
+      - ./logs:/var/log/issue_receipt
+    restart: always
+volumes:
+  logs:
